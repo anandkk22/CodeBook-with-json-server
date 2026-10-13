@@ -5,7 +5,7 @@ export async function login(authDetails) {
         body: JSON.stringify(authDetails)
     }
 
-    const response = await fetch("http://localhost:5000/login", requestOptions);
+    const response = await fetch(`${process.env.REACT_APP_HOST}/login`, requestOptions);
     if (!response.ok) {
         throw { message: response.statusText, status: response.status };
     }
@@ -25,7 +25,7 @@ export async function register(authDetails) {
         body: JSON.stringify(authDetails)
     }
     
-    const response = await fetch("http://localhost:5000/register", requestOptions);
+    const response = await fetch(`${process.env.REACT_APP_HOST}/register`, requestOptions);
     if (!response.ok) {
         throw { message: response.statusText, status: response.status };
     }

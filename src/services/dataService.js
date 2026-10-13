@@ -11,7 +11,7 @@ export async function getUser() {
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${browserData.token}` }
   }
 
-  const response = await fetch(`http://localhost:5000/600/users/${browserData.id}`, requestOption)
+  const response = await fetch(`${process.env.REACT_APP_HOST}/600/users/${browserData.id}`, requestOption)
   if (!response.ok) {
     throw { message: response.statusText, status: response.status };
   }
@@ -26,7 +26,7 @@ export async function getUserOrders() {
     method: 'GET',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${browserData.token}` }
   }
-  const response = await fetch(`http://localhost:5000/660/orders?user.id=${browserData.id}`, requestObj);
+  const response = await fetch(`${process.env.REACT_APP_HOST}/660/orders?user.id=${browserData.id}`, requestObj);
   if (!response.ok) {
     throw { message: response.statusText, status: response.status };
   }
@@ -51,7 +51,7 @@ export async function createOrder(cartList, total, user) {
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${browserData.token}` },
     body: JSON.stringify(order)
   }
-  const response = await fetch("http://localhost:5000/660/orders", requestObject)
+  const response = await fetch(`${process.env.REACT_APP_HOST}/660/orders`, requestObject)
   if (!response.ok) {
     throw { message: response.statusText, status: response.status };
   }
