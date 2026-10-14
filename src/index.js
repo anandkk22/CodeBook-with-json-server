@@ -15,7 +15,6 @@ root.render(
       <CartProvider>
         <FilterProvider>
           <ScrollToTop />
-          {/* <ToastContainer closeButton={false} autoClose={3000} position={"bottom-right"} /> */}
           <ToastContainer />
           <App />
         </FilterProvider>
