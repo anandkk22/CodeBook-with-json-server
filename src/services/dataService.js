@@ -13,7 +13,7 @@ export async function getUser() {
 
   const response = await fetch(`${process.env.REACT_APP_HOST}/600/users/${browserData.id}`, requestOption)
   if (!response.ok) {
-    throw { message: response.statusText, status: response.status };
+    throw Object.assign(new Error(response.statusText), { status: response.status });
   }
   const data = await response.json();
   return data;
@@ -28,7 +28,7 @@ export async function getUserOrders() {
   }
   const response = await fetch(`${process.env.REACT_APP_HOST}/660/orders?user.id=${browserData.id}`, requestObj);
   if (!response.ok) {
-    throw { message: response.statusText, status: response.status };
+    throw Object.assign(new Error(response.statusText), { status: response.status });
   }
   const data = await response.json();
   return data;
@@ -53,7 +53,7 @@ export async function createOrder(cartList, total, user) {
   }
   const response = await fetch(`${process.env.REACT_APP_HOST}/660/orders`, requestObject)
   if (!response.ok) {
-    throw { message: response.statusText, status: response.status };
+    throw Object.assign(new Error(response.statusText), { status: response.status });
   }
 
   const data = await response.json();
