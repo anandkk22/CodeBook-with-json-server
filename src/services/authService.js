@@ -24,7 +24,7 @@ export async function register(authDetails) {
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(authDetails)
     }
-    
+
     const response = await fetch(`${process.env.REACT_APP_HOST}/register`, requestOptions);
     if (!response.ok) {
         throw Object.assign(new Error(response.statusText), { status: response.status });
